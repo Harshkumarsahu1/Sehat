@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <link href="../../static/css/spring-core.css" th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container-fluid {
+            background-color: rgb(64, 0, 64);
+        }
+
+        .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+            color: white !important;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            margin: 20px;
+        }
+
+        .box {
+            background: #fff;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            width: 30%;
+            box-sizing: border-box;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+        .box img {
+            width: 100%;
+            border-radius: 8px;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .box h5 {
+            margin-top: 20px;
+        }
+
+        .box .btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse" style="background-color: rgb(64, 0, 64);">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-cutlery"></span> NUTRO</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/quickbrowse"><span class="glyphicon glyphicon-globe"></span> Quick Browse</a></li>
+                <li><a href="/quickanswer"><span class="glyphicon glyphicon-thumbs-up"></span> Quick Answer</a></li>
+                <li class="active"><a href="/chillax"><span class="glyphicon glyphicon-sunglasses"></span> Chillax</a></li>
+                <li><a href="/yourquery"><span class="glyphicon glyphicon-envelope"></span> Your Query</a></li>
+            </ul>
+        </ul>
+    </div>
+</nav>
+
+<div class="content">
+    <div class="box">
+        <img src="images/joke.jpg" alt="Joke Image">
+        <form class="form-horizontal" action="#" th:action="@{/GetJoke}" th:object="${input}" method="post">
+            <input class="btn btn-primary" type="submit" value="Show some joke....">
+        </form>
+        <h5><span th:text="${joke}"></span></h5>
+    </div>
+
+    <div class="box">
+        <img src="images/think.jpg" alt="Think Image">
+        <form class="form-horizontal" action="#" th:action="@{/GetTrivia}" th:object="${input}" method="post">
+            <input class="btn btn-primary" type="submit" value="Show some food trivia....">
+        </form>
+        <h5><span th:text="${trivia}"></span></h5>
+    </div>
+
+    <div class="box">
+        <img src="images/nutrients.jpg" alt="Nutrients Image">
+        <form class="form-horizontal" action="#" th:action="@{/GetNutrients}" th:object="${input}" method="post">
+            <input class="btn btn-primary" type="submit" value="Show some nutrients....">
+        </form>
+        <h5><span th:text="${nutrients}"></span></h5>
+    </div>
+</div>
+</body>
+</html>
