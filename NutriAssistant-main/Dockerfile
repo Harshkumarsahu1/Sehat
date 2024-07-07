@@ -1,5 +1,5 @@
 # Use Maven for build stage with a compatible JDK version
-FROM maven:3.8.5-openjdk-15-slim AS build
+FROM maven:3.8.5-openjdk-11 AS build
 
 # Copy the entire project into the build stage
 COPY . .
