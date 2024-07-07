@@ -1,5 +1,5 @@
-# Use Maven for build stage with the specified JDK version
-FROM maven:3.8.5-openjdk-15 AS build
+# Use Maven for build stage with a compatible JDK version
+FROM maven:3.8.5-openjdk-15-slim AS build
 
 # Copy the entire project into the build stage
 COPY . .
@@ -14,7 +14,7 @@ FROM openjdk:15-jdk-slim
 COPY --from=build /target/Nutro-ass-0.0.1-SNAPSHOT.jar Nutro-ass.jar
 
 # Expose port 8080
-EXPOSE 8082
+EXPOSE 8080
 
 # Set the entry point to run the JAR file
 ENTRYPOINT ["java", "-jar", "Nutro-ass.jar"]
